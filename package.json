@@ -5,7 +5,8 @@
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
-        "test": "jest --silent --watchAll",
+        "test": "jest",
+        "test-dev": "jest --silent --watchAll",
         "coverage": "jest --coverage --silent"
     },
     "repository": "git@github.com:iamdanielcooper/book-blog.git",
