@@ -1,5 +1,7 @@
 # book-blog
 
+[![CI](https://github.com/iamdanielcooper/book-blog/actions/workflows/main.yml/badge.svg)](https://github.com/iamdanielcooper/book-blog/actions/workflows/main.yml)
+
 A blog where I can write about the books I'm reading.
 
 ## Usage
