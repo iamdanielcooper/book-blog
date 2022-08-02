@@ -1,5 +1,12 @@
-const app = require('./index');
+const express = require('express');
+const cors = require('cors');
 
-app.get('/', (req, res) => {
-    res.send('hello');
-});
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Users
+const usersRoutes = require('./routes/users/usersRoutes');
+app.use('/users', usersRoutes);
+
+module.exports = app;
