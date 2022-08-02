@@ -13,6 +13,19 @@ A blog where I can write about the books I'm reading.
 ## Technologies Used.
 
 -   Yarn (package management)
+-   NodeJs
+    -   Express
+    -   Cors
+    -   Nodemon
+    -   Bcrypt
+    -   Dotenv
+    -   pg-promise
+
+## References.
+
+### Database Schemas.
+
+-   [Users](https://dbdiagram.io/d/62e9a20ef31da965e8685cc5)
 
 ## User Stories.
 
