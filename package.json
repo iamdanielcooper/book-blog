@@ -3,8 +3,10 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon app.js"
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "jest --silent --watchAll",
+        "coverage": "jest --coverage --silent"
     },
     "repository": "git@github.com:iamdanielcooper/book-blog.git",
     "author": "Dan Cooper <iamdanielcooper@users.noreply.github.com>",
@@ -14,9 +16,11 @@
         "cors": "^2.8.5",
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
+        "jest": "^28.1.3",
         "pg-promise": "^10.11.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.19"
+        "nodemon": "^2.0.19",
+        "supertest": "^6.2.4"
     }
 }
