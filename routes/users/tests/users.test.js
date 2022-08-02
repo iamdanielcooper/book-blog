@@ -5,7 +5,7 @@ describe('Users Tests', () => {
     let api;
 
     beforeAll(() => {
-        api = server.listen(3000, () => console.log('Test server running on port 5000'));
+        api = server.listen(3000, () => console.log('Test server running on port 3000'));
     });
 
     afterAll(done => {
