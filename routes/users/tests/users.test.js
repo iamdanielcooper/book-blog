@@ -5,7 +5,7 @@ describe('Users Tests', () => {
     let api;
 
     beforeAll(() => {
-        api = server.listen(3000, () => console.log('Test server running on port 5000'));
+        api = server.listen(3000, () => console.log('Test server running on port 3000'));
     });
 
     afterAll(done => {
@@ -14,6 +14,26 @@ describe('Users Tests', () => {
     });
 
     test("successful requests to POST /users/register returns status '201 created'", done => {
-        request(api).post('/users/register').expect(201, done);
+        const testUser = {
+            username: '123',
+            email: '123@example.com',
+            password: '12345',
+            isAdmin: true,
+        };
+        request(api).post('/users/register').send(testUser).expect(201, done);
+    });
+
+    test("a request POST /users/register with existing username returns status '400 Bad Request'", done => {
+        const testUser = {
+            username: '123',
+            email: '123@example.com',
+            password: '12345',
+            isAdmin: true,
+        };
+
+        // Add user.
+        // Try to add user with the same username
+
+        request(api).post('/users/register').send(testUser).expect(400, done);
     });
 });
