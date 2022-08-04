@@ -1,6 +1,6 @@
 const Users = require('../models/Users');
 
-const addUser = (req, res) => {
+const addUser = async (req, res) => {
     //== Error handling
     // Check if username is available.
     // Check email is available.
@@ -14,6 +14,7 @@ const addUser = (req, res) => {
 
     // Add user to the database.
     // Status code 201.
+    await Users.createDatabase();
 
     const user = Users.createUser(req.body);
 

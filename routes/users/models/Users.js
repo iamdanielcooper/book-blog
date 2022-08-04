@@ -1,3 +1,5 @@
+const database = require("'../../../database/database");
+
 class Users {
     constructor(data) {
         this.username = data.username;
