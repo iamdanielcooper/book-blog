@@ -1,3 +1,5 @@
+const database = require('../../../database/database');
+
 class Database {
     constructor() {}
 
@@ -14,9 +16,9 @@ class Database {
             await database.any('DROP TABLE IF EXISTS users;');
             await database.any(
                 `CREATE TABLE users (
-                    id SERIAL PRIMARY KEY, 
-                    username VARCHAR(250), 
-                    email VARCHAR(250), 
+                    id SERIAL PRIMARY KEY,
+                    username VARCHAR(250),
+                    email VARCHAR(250),
                     password VARCHAR(250),
                     is_admin BOOLEAN,
                     email_confirmed BOOLEAN);`
