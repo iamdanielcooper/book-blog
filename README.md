@@ -35,6 +35,22 @@ As a user I can create an account with admin privileges.
 
 ## Endpoints.
 
-`POST /users/register`
+```
+POST /users/register
+// Adds a new user to the database.
 
-`POST /database/init`
+// Body
+
+{
+    "username": "string",
+    "password": "string",
+    "email": "string",
+    "isAdmin": boolean
+}
+
+```
+
+```
+POST /database/init
+// Tears down and re-inits the database.
+```
