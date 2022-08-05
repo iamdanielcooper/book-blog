@@ -18,7 +18,7 @@ class Users {
             );
             return 'User successfully added.';
         } catch (error) {
-            console.log(error);
+            return error;
         }
     }
 
