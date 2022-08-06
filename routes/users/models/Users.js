@@ -50,6 +50,24 @@ class Users {
         const salt = bcrypt.genSaltSync(saltRounds);
         return bcrypt.hashSync(password, salt);
     }
+
+    static async login(loginCredentials) {
+        try {
+            const user = await this.getByUsername(loginCredentials.username);
+            if (!user) throw new Error('user not found');
+
+            const passwordCorrect = await this.verifyPassword(loginCredentials.password, user.password);
+            if (!passwordCorrect) throw new Error('password incorrect');
+
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    static async verifyPassword(password, hashedPassword) {
+        return await bcrypt.compare(password, hashedPassword);
+    }
 }
 
 module.exports = Users;
