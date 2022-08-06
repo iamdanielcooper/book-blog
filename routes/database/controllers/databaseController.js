@@ -5,7 +5,6 @@ const initDatabase = async (req, res) => {
         await Database.initDatabase();
         res.status(201).send('Database successfully initialized.');
     } catch (error) {
-        console.log(error);
         res.status(500).send(error);
     }
 };
