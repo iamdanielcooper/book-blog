@@ -7,7 +7,7 @@ class Database {
         try {
             await this.initUsers();
         } catch (error) {
-            console.log(error);
+            return error;
         }
     }
 
@@ -24,7 +24,7 @@ class Database {
                     email_confirmed BOOLEAN);`
             );
         } catch (error) {
-            console.log(error);
+            return error;
         }
     }
 }
