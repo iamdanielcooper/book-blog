@@ -80,6 +80,8 @@ describe('Users Tests', () => {
     });
 
     test('successfull request to POST /users/login returns 200 status code', done => {
+        Users.verifyPassword = jest.fn().mockReturnValue(true);
+        Users.getByUsername = jest.fn().mockReturnValue(true);
         request(api).post('/users/login').send({ username: 'dan', password: '123' }).expect(200, done);
     });
 
@@ -96,6 +98,8 @@ describe('Users Tests', () => {
     });
 
     test('POST /users/login if password is incorrect returns 401 status code', done => {
-        request(api).post('/users/login').send({ username: '123', password: 'hello' }).expect(400, done);
+        Users.verifyPassword = jest.fn().mockReturnValue(false);
+        Users.getByUsername = jest.fn().mockReturnValue(true);
+        request(api).post('/users/login').send({ username: '123', password: 'hello' }).expect(401, done);
     });
 });
