@@ -78,4 +78,28 @@ describe('Users Tests', () => {
 
         request(api).post('/users/register').send(testUser).expect(503, done);
     });
+
+    test('successfull request to POST /users/login returns 200 status code', done => {
+        Users.verifyPassword = jest.fn().mockReturnValue(true);
+        Users.getByUsername = jest.fn().mockReturnValue(true);
+        request(api).post('/users/login').send({ username: 'dan', password: '123' }).expect(200, done);
+    });
+
+    test('a request to POST /users/login with missing no body returns 400 status code', done => {
+        request(api).post('/users/login').expect(400, done);
+    });
+
+    test('a request to POST /users/login with missing username returns 400 status code', done => {
+        request(api).post('/users/login').send({ password: '123' }).expect(400, done);
+    });
+
+    test('a request to POST /users/login with missing password returns 400 status code', done => {
+        request(api).post('/users/login').send({ username: '123' }).expect(400, done);
+    });
+
+    test('POST /users/login if password is incorrect returns 401 status code', done => {
+        Users.verifyPassword = jest.fn().mockReturnValue(false);
+        Users.getByUsername = jest.fn().mockReturnValue(true);
+        request(api).post('/users/login').send({ username: '123', password: 'hello' }).expect(401, done);
+    });
 });
