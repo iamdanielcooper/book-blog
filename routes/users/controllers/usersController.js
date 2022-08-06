@@ -20,4 +20,8 @@ const addUser = async (req, res) => {
     }
 };
 
-module.exports = { addUser };
+const logInUser = async (req, res) => {
+    res.status(200).send('User successfully logged in.');
+};
+
+module.exports = { addUser, logInUser };
