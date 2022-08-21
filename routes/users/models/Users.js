@@ -4,15 +4,18 @@ const saltRounds = 10;
 
 class Users {
     constructor(data) {
-        this.username = data.username;
+        this.username = data.username.toLowerCase();
         this.password = data.password;
-        this.email = data.email;
+        this.email = data.email.toLowerCase();
         this.isAdmin = data.isAdmin;
         this.emailConfirmed = false;
     }
 
     static create(data) {
-        return new Users({ ...data, password: this.hashPassword(data.password) });
+        return new Users({
+            ...data,
+            password: this.hashPassword(data.password),
+        });
     }
 
     static async createUser(data) {
@@ -53,7 +56,7 @@ class Users {
 
     static async login(loginCredentials) {
         try {
-            const user = await this.getByUsername(loginCredentials.username);
+            const user = await this.getByUsername(loginCredentials.username.toLowerCase());
             if (!user) throw new Error('user not found');
 
             const passwordCorrect = await this.verifyPassword(loginCredentials.password, user.password);
